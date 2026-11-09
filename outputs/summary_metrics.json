@@ -1,0 +1,407 @@
+{
+  "inspection": {
+    "total_rows": 2349,
+    "total_columns": 7,
+    "column_names": [
+      "type",
+      "author",
+      "comment",
+      "likes",
+      "published_at",
+      "reply_count",
+      "video_name"
+    ],
+    "column_inspection": {
+      "type": {
+        "dtype": "str",
+        "non_null_count": 2349,
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_values": 1
+      },
+      "author": {
+        "dtype": "str",
+        "non_null_count": 2349,
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_values": 2159
+      },
+      "comment": {
+        "dtype": "str",
+        "non_null_count": 2348,
+        "null_count": 1,
+        "null_pct": 0.043,
+        "unique_values": 2187
+      },
+      "likes": {
+        "dtype": "int64",
+        "non_null_count": 2349,
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_values": 280
+      },
+      "published_at": {
+        "dtype": "str",
+        "non_null_count": 2349,
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_values": 2349
+      },
+      "reply_count": {
+        "dtype": "int64",
+        "non_null_count": 2349,
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_values": 61
+      },
+      "video_name": {
+        "dtype": "str",
+        "non_null_count": 2349,
+        "null_count": 0,
+        "null_pct": 0.0,
+        "unique_values": 2
+      }
+    },
+    "full_duplicate_rows": 0,
+    "duplicate_comments_text": 161,
+    "distinct_repeated_comments": 53,
+    "duplicate_authors": 190,
+    "memory_bytes": 996468,
+    "memory_mb": 0.95
+  },
+  "statistics": {
+    "likes": {
+      "count": 2349,
+      "sum": 163912.0,
+      "mean": 69.779,
+      "std": 419.235,
+      "variance": 175758.272,
+      "min": 0.0,
+      "q25": 0.0,
+      "median": 1.0,
+      "q75": 12.0,
+      "max": 9441.0,
+      "iqr": 12.0,
+      "skewness": 14.026,
+      "kurtosis": 243.678,
+      "zero_count": 1027,
+      "zero_pct": 43.72,
+      "p90": 87.0,
+      "p95": 246.19999999999936,
+      "p99": 1299.1999999999998,
+      "top_1_pct_share": 48.23,
+      "gini_coefficient": 0.9336
+    },
+    "reply_count": {
+      "count": 2349,
+      "sum": 5662.0,
+      "mean": 2.41,
+      "std": 13.485,
+      "variance": 181.847,
+      "min": 0.0,
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 0.0,
+      "max": 293.0,
+      "iqr": 0.0,
+      "skewness": 12.65,
+      "kurtosis": 208.695,
+      "zero_count": 1823,
+      "zero_pct": 77.61,
+      "p90": 3.0,
+      "p95": 9.0,
+      "p99": 45.039999999999964,
+      "top_1_pct_share": 46.79,
+      "gini_coefficient": 0.9387
+    },
+    "top_5_liked_comments": [
+      {
+        "author": "@SKcreation776",
+        "likes": 9441,
+        "reply_count": 150,
+        "published_at": "2019-04-07T05:56:39Z",
+        "comment": "How many likes for yash dance ....salaam Rocky bhai",
+        "comment_preview": "How many likes for yash dance ....salaam Rocky bhai"
+      },
+      {
+        "author": "@SWyra75",
+        "likes": 7631,
+        "reply_count": 276,
+        "published_at": "2024-01-01T18:14:01Z",
+        "comment": "Hanji sab ne shoor machaya tha 2026 lo agya khush ab dobara gana sune 😂🖐🏻😩",
+        "comment_preview": "Hanji sab ne shoor machaya tha 2026 lo agya khush ab dobara gana sune 😂🖐🏻😩"
+      },
+      {
+        "author": "@AnilKumar-qu3xb",
+        "likes": 7517,
+        "reply_count": 104,
+        "published_at": "2022-04-14T19:19:45Z",
+        "comment": "When yash begin dance from 2:13 to last just fire🔥 it gave me goosebumps",
+        "comment_preview": "When yash begin dance from 2:13 to last just fire🔥 it gave me goosebumps"
+      },
+      {
+        "author": "@rockstarabhi9971",
+        "likes": 7069,
+        "reply_count": 89,
+        "published_at": "2021-02-19T15:46:03Z",
+        "comment": "Yash's Attitude is Amazing😍🤩\nNeha's Voice was Awesome. 🎵\nMouni's Dance🔥🔥",
+        "comment_preview": "Yash's Attitude is Amazing😍🤩\nNeha's Voice was Awesome. 🎵\nMouni's Dance🔥🔥"
+      },
+      {
+        "author": "@chanchalyadav9233",
+        "likes": 4512,
+        "reply_count": 40,
+        "published_at": "2021-08-04T10:29:31Z",
+        "comment": "Yash's attitude🔥+ mouni's dance😍+ Neha's voice🎤= ❤️❤️\n        Edit:- 2.4K likes😮😂\n                  Now 4.4K in 2026😶‍🌫️",
+        "comment_preview": "Yash's attitude🔥+ mouni's dance😍+ Neha's voice🎤= ❤️❤️\n        Edit:- 2.4K likes😮😂\n                  Now 4.4K in 2026😶‍🌫️"
+      }
+    ],
+    "top_5_replied_comments": [
+      {
+        "author": "@unitedgamer_10",
+        "reply_count": 293,
+        "likes": 2992,
+        "published_at": "2021-03-12T17:57:52Z",
+        "comment": "Legends are watching this after 5 years😂😂",
+        "comment_preview": "Legends are watching this after 5 years😂😂"
+      },
+      {
+        "author": "@SWyra75",
+        "reply_count": 276,
+        "likes": 7631,
+        "published_at": "2024-01-01T18:14:01Z",
+        "comment": "Hanji sab ne shoor machaya tha 2026 lo agya khush ab dobara gana sune 😂🖐🏻😩",
+        "comment_preview": "Hanji sab ne shoor machaya tha 2026 lo agya khush ab dobara gana sune 😂🖐🏻😩"
+      },
+      {
+        "author": "@loveall2547",
+        "reply_count": 163,
+        "likes": 2990,
+        "published_at": "2020-12-17T10:29:23Z",
+        "comment": "Who came to watch the song on YouTube after remembering the song like me😆😀👍",
+        "comment_preview": "Who came to watch the song on YouTube after remembering the song like me😆😀👍"
+      },
+      {
+        "author": "@AdityaKamble-m6w",
+        "reply_count": 161,
+        "likes": 2875,
+        "published_at": "2024-12-13T12:24:29Z",
+        "comment": "2025 hajri lagwao 😅",
+        "comment_preview": "2025 hajri lagwao 😅"
+      },
+      {
+        "author": "@S.A1947",
+        "reply_count": 161,
+        "likes": 4245,
+        "published_at": "2021-12-14T03:57:55Z",
+        "comment": "*I have seen many Indian films in my life but I have not seen films like KGF and Bahubali till date, so everything is absolutely equal, especially KGF this movie has made a different place in my heart forever. From the time till the director, all the people have done a wonderful job. Both these movies are the milestones of Indian cinema, which is priceless. Now I am proud of Indian cinema and I hope KGF 2 movie will write a new history in Indian cinema. Which will take Indian cinema to a different dimension. Heartfelt thanks to Indian cinema*",
+        "comment_preview": "*I have seen many Indian films in my life but I have not seen films like KGF and Bahubali till date, so everything is absolutely equal, especially KGF"
+      }
+    ],
+    "pearson_correlation": 0.7739,
+    "pearson_t_stat": 59.208,
+    "pearson_p_value": "< 0.0001",
+    "spearman_correlation": 0.6715,
+    "spearman_t_stat": 43.898,
+    "spearman_df": 2347,
+    "spearman_p_value": "< 0.0001"
+  },
+  "temporal": {
+    "earliest_comment_utc": "2016-02-21 06:12:10 UTC",
+    "latest_comment_utc": "2026-10-30 10:31:37 UTC",
+    "total_span_days": 3904.2,
+    "yearly_distribution": {
+      "2016": 44,
+      "2017": 25,
+      "2018": 52,
+      "2019": 92,
+      "2020": 103,
+      "2021": 104,
+      "2022": 67,
+      "2023": 15,
+      "2024": 35,
+      "2025": 138,
+      "2026": 1674
+    },
+    "day_of_week_distribution": {
+      "Monday": 305,
+      "Tuesday": 323,
+      "Wednesday": 353,
+      "Thursday": 347,
+      "Friday": 328,
+      "Saturday": 339,
+      "Sunday": 354
+    },
+    "hour_of_day_distribution_utc": {
+      "00:00": 21,
+      "01:00": 40,
+      "02:00": 58,
+      "03:00": 104,
+      "04:00": 111,
+      "05:00": 118,
+      "06:00": 133,
+      "07:00": 122,
+      "08:00": 117,
+      "09:00": 118,
+      "10:00": 124,
+      "11:00": 135,
+      "12:00": 136,
+      "13:00": 151,
+      "14:00": 149,
+      "15:00": 140,
+      "16:00": 138,
+      "17:00": 129,
+      "18:00": 98,
+      "19:00": 73,
+      "20:00": 50,
+      "21:00": 32,
+      "22:00": 35,
+      "23:00": 17
+    },
+    "era_breakdown": {
+      "launch_window_2016": 44,
+      "catalog_tail_2017_2024": 493,
+      "resurgence_phase_2025_2026": 1812,
+      "resurgence_share_pct": 77.14
+    }
+  },
+  "text": {
+    "total_analyzed_comments": 2348,
+    "char_length": {
+      "min": 1,
+      "mean": 34.74,
+      "median": 24.0,
+      "max": 673,
+      "std": 46.31
+    },
+    "word_count": {
+      "min": 1,
+      "mean": 6.55,
+      "median": 4.0,
+      "max": 137
+    },
+    "expression_counts": {
+      "comments_with_question": 76,
+      "question_pct": 3.24,
+      "comments_with_exclamation": 46,
+      "exclamation_pct": 1.96,
+      "comments_with_emojis": 1149,
+      "emoji_pct": 48.94
+    },
+    "top_keywords": [
+      {
+        "keyword": "kon",
+        "count": 142
+      },
+      {
+        "keyword": "yash",
+        "count": 114
+      },
+      {
+        "keyword": "love",
+        "count": 108
+      },
+      {
+        "keyword": "anyone",
+        "count": 92
+      },
+      {
+        "keyword": "dance",
+        "count": 84
+      },
+      {
+        "keyword": "nice",
+        "count": 79
+      },
+      {
+        "keyword": "kgf",
+        "count": 76
+      },
+      {
+        "keyword": "arjun",
+        "count": 73
+      },
+      {
+        "keyword": "mouni",
+        "count": 65
+      },
+      {
+        "keyword": "kapoor",
+        "count": 60
+      },
+      {
+        "keyword": "raha",
+        "count": 57
+      },
+      {
+        "keyword": "kareena",
+        "count": 56
+      },
+      {
+        "keyword": "here",
+        "count": 55
+      },
+      {
+        "keyword": "bhai",
+        "count": 54
+      },
+      {
+        "keyword": "sun",
+        "count": 54
+      },
+      {
+        "keyword": "movie",
+        "count": 52
+      },
+      {
+        "keyword": "roy",
+        "count": 47
+      },
+      {
+        "keyword": "rocky",
+        "count": 44
+      },
+      {
+        "keyword": "years",
+        "count": 43
+      },
+      {
+        "keyword": "best",
+        "count": 41
+      },
+      {
+        "keyword": "honey",
+        "count": 41
+      },
+      {
+        "keyword": "his",
+        "count": 40
+      },
+      {
+        "keyword": "indian",
+        "count": 34
+      },
+      {
+        "keyword": "gali",
+        "count": 34
+      },
+      {
+        "keyword": "listening",
+        "count": 34
+      }
+    ],
+    "thematic_mentions": {
+      "kareena_kapoor": 56,
+      "honey_singh": 49,
+      "arjun_kapoor": 70,
+      "meet_bros": 0,
+      "jaz_dhami": 2,
+      "nostalgia_attendance": 447,
+      "dance_choreography": 172,
+      "remix_comparison": 16,
+      "mouni_roy": 64,
+      "neha_kakkar": 24,
+      "kgf_yash": 196
+    }
+  }
+}

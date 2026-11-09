@@ -1,0 +1,92 @@
+[
+  {
+    "workload_target": 10000,
+    "actual_records": 10000,
+    "engine": "Pandas",
+    "execution_time_sec": 0.0215,
+    "memory_mb": 0.18,
+    "status": "PASS",
+    "throughput_rec_sec": 464063.0,
+    "notes": "Vectorized in-memory aggregation"
+  },
+  {
+    "workload_target": 10000,
+    "actual_records": 10000,
+    "engine": "MapReduce",
+    "execution_time_sec": 0.1795,
+    "memory_mb": 0.55,
+    "status": "PASS",
+    "throughput_rec_sec": 55726.0,
+    "notes": "Chunked Map-Shuffle-Reduce (Consistent: True)"
+  },
+  {
+    "workload_target": 10000,
+    "actual_records": 10000,
+    "engine": "Apache Spark",
+    "execution_time_sec": 0.0,
+    "memory_mb": 0.0,
+    "status": "DIAGNOSTIC_UNAVAILABLE",
+    "throughput_rec_sec": 0.0,
+    "notes": "Java Development Kit (JDK/JRE) not detected in system PATH. Apache Spark requires Java 8/11/17 runtime."
+  },
+  {
+    "workload_target": 100000,
+    "actual_records": 100000,
+    "engine": "Pandas",
+    "execution_time_sec": 0.0174,
+    "memory_mb": 1.54,
+    "status": "PASS",
+    "throughput_rec_sec": 5762958.0,
+    "notes": "Vectorized in-memory aggregation"
+  },
+  {
+    "workload_target": 100000,
+    "actual_records": 100000,
+    "engine": "MapReduce",
+    "execution_time_sec": 2.6687,
+    "memory_mb": 5.37,
+    "status": "PASS",
+    "throughput_rec_sec": 37472.0,
+    "notes": "Chunked Map-Shuffle-Reduce (Consistent: True)"
+  },
+  {
+    "workload_target": 100000,
+    "actual_records": 100000,
+    "engine": "Apache Spark",
+    "execution_time_sec": 0.0,
+    "memory_mb": 0.0,
+    "status": "DIAGNOSTIC_UNAVAILABLE",
+    "throughput_rec_sec": 0.0,
+    "notes": "Java Development Kit (JDK/JRE) not detected in system PATH. Apache Spark requires Java 8/11/17 runtime."
+  },
+  {
+    "workload_target": 1000000,
+    "actual_records": 1000000,
+    "engine": "Pandas",
+    "execution_time_sec": 0.2004,
+    "memory_mb": 15.28,
+    "status": "PASS",
+    "throughput_rec_sec": 4989074.0,
+    "notes": "Vectorized in-memory aggregation"
+  },
+  {
+    "workload_target": 1000000,
+    "actual_records": 1000000,
+    "engine": "MapReduce",
+    "execution_time_sec": 50.8167,
+    "memory_mb": 53.61,
+    "status": "PASS",
+    "throughput_rec_sec": 19679.0,
+    "notes": "Chunked Map-Shuffle-Reduce (Consistent: True)"
+  },
+  {
+    "workload_target": 1000000,
+    "actual_records": 1000000,
+    "engine": "Apache Spark",
+    "execution_time_sec": 0.0,
+    "memory_mb": 0.0,
+    "status": "DIAGNOSTIC_UNAVAILABLE",
+    "throughput_rec_sec": 0.0,
+    "notes": "Java Development Kit (JDK/JRE) not detected in system PATH. Apache Spark requires Java 8/11/17 runtime."
+  }
+]

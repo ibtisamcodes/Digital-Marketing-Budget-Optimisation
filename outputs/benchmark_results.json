@@ -1,0 +1,60 @@
+{
+  "experiment_name": "DS391 Synthetic Scalability Stress Test",
+  "dataset_name": "high-heels-te-nachche-video-song-ki-ka-meet-bros-",
+  "label": "Synthetic Scalability Experiment",
+  "disclaimer": "NOTICE: The 10x and 100x workloads are generated via synthetic in-memory replication of the original ground-truth 1,166 rows to simulate large-scale data stream processing and evaluate algorithmic time/space complexity.",
+  "iterations_per_workload": 3,
+  "workloads": [
+    {
+      "multiplier": 1,
+      "scale_label": "1x (2,349 rows)",
+      "is_synthetic": false,
+      "workload_note": "Original Ground-Truth Dataset",
+      "row_count": 2349,
+      "col_count": 7,
+      "iterations": 3,
+      "mean_runtime_seconds": 0.1354,
+      "std_runtime_seconds": 0.0021,
+      "min_runtime_seconds": 0.1334,
+      "max_runtime_seconds": 0.1383,
+      "peak_memory_mb": 0.945,
+      "throughput_rows_per_sec": 17343.9,
+      "runtime_scale_factor": 1.0,
+      "memory_scale_factor": 1.0
+    },
+    {
+      "multiplier": 10,
+      "scale_label": "10x (23,490 rows)",
+      "is_synthetic": true,
+      "workload_note": "Synthetic Scalability Experiment (Replicated 10x)",
+      "row_count": 23490,
+      "col_count": 7,
+      "iterations": 3,
+      "mean_runtime_seconds": 1.1045,
+      "std_runtime_seconds": 0.011,
+      "min_runtime_seconds": 1.0911,
+      "max_runtime_seconds": 1.118,
+      "peak_memory_mb": 8.965,
+      "throughput_rows_per_sec": 21268.3,
+      "runtime_scale_factor": 8.16,
+      "memory_scale_factor": 9.49
+    },
+    {
+      "multiplier": 100,
+      "scale_label": "100x (234,900 rows)",
+      "is_synthetic": true,
+      "workload_note": "Synthetic Scalability Experiment (Replicated 100x)",
+      "row_count": 234900,
+      "col_count": 7,
+      "iterations": 3,
+      "mean_runtime_seconds": 11.4564,
+      "std_runtime_seconds": 0.0793,
+      "min_runtime_seconds": 11.3486,
+      "max_runtime_seconds": 11.5372,
+      "peak_memory_mb": 89.57,
+      "throughput_rows_per_sec": 20503.9,
+      "runtime_scale_factor": 84.61,
+      "memory_scale_factor": 94.78
+    }
+  ]
+}

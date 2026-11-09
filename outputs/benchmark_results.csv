@@ -1,0 +1,4 @@
+multiplier,scale_label,is_synthetic,workload_note,row_count,col_count,iterations,mean_runtime_seconds,std_runtime_seconds,min_runtime_seconds,max_runtime_seconds,peak_memory_mb,throughput_rows_per_sec,runtime_scale_factor,memory_scale_factor
+1,"1x (2,349 rows)",False,Original Ground-Truth Dataset,2349,7,3,0.1354,0.0021,0.1334,0.1383,0.945,17343.9,1.0,1.0
+10,"10x (23,490 rows)",True,Synthetic Scalability Experiment (Replicated 10x),23490,7,3,1.1045,0.011,1.0911,1.118,8.965,21268.3,8.16,9.49
+100,"100x (234,900 rows)",True,Synthetic Scalability Experiment (Replicated 100x),234900,7,3,11.4564,0.0793,11.3486,11.5372,89.57,20503.9,84.61,94.78

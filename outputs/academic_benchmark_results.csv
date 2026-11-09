@@ -1,0 +1,10 @@
+workload_target,actual_records,engine,execution_time_sec,memory_mb,status,throughput_rec_sec,notes
+10000,10000,Pandas,0.0215,0.18,PASS,464063.0,Vectorized in-memory aggregation
+10000,10000,MapReduce,0.1795,0.55,PASS,55726.0,Chunked Map-Shuffle-Reduce (Consistent: True)
+10000,10000,Apache Spark,0.0,0.0,DIAGNOSTIC_UNAVAILABLE,0.0,Java Development Kit (JDK/JRE) not detected in system PATH. Apache Spark requires Java 8/11/17 runtime.
+100000,100000,Pandas,0.0174,1.54,PASS,5762958.0,Vectorized in-memory aggregation
+100000,100000,MapReduce,2.6687,5.37,PASS,37472.0,Chunked Map-Shuffle-Reduce (Consistent: True)
+100000,100000,Apache Spark,0.0,0.0,DIAGNOSTIC_UNAVAILABLE,0.0,Java Development Kit (JDK/JRE) not detected in system PATH. Apache Spark requires Java 8/11/17 runtime.
+1000000,1000000,Pandas,0.2004,15.28,PASS,4989074.0,Vectorized in-memory aggregation
+1000000,1000000,MapReduce,50.8167,53.61,PASS,19679.0,Chunked Map-Shuffle-Reduce (Consistent: True)
+1000000,1000000,Apache Spark,0.0,0.0,DIAGNOSTIC_UNAVAILABLE,0.0,Java Development Kit (JDK/JRE) not detected in system PATH. Apache Spark requires Java 8/11/17 runtime.

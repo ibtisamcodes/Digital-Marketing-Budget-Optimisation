@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Comment Scrapper — Analytics & Export Dashboard</title>
+  <meta name="description" content="Professional dark-mode analytics dashboard for searching YouTube videos, retrieving comment threads, analyzing engagement, and exporting datasets." />
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="app-container">
+  <!-- Mobile Backdrop Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <a href="#" class="brand-link" id="brandHomeLink">
+        <div class="brand-icon-wrap">
+          <!-- YouTube Play Icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">YT Scrapper</span>
+          <span class="brand-subtitle">Analytics Dashboard</span>
+        </div>
+      </a>
+      <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="sidebar-nav">
+      <span class="nav-section-title">Workspace</span>
+      
+      <button class="nav-item active" data-view="dashboard">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </span>
+        Dashboard
+      </button>
+
+      <button class="nav-item" data-view="search">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        Video Search
+      </button>
+
+      <button class="nav-item" data-view="comments">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        Comments
+      </button>
+
+      <span class="nav-section-title">Tools & Management</span>
+
+      <button class="nav-item" data-view="exports">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+        </span>
+        Export History
+      </button>
+
+      <button class="nav-item" data-view="settings">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        Settings & API
+      </button>
+    </nav>
+
+    <!-- Sidebar Footer / Quota Widget -->
+    <div class="sidebar-footer">
+      <div class="api-quota-card">
+        <div class="quota-header">
+          <span>YouTube API v3</span>
+          <div class="quota-indicator">
+            <span class="quota-dot" id="quotaDot"></span>
+            <span id="quotaStatusText">Connected</span>
+          </div>
+        </div>
+        <div class="quota-desc">
+          Server-side authenticated. 10,000 daily free units quota.
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Layout Area -->
+  <div class="main-layout">
+    <!-- Top Navigation -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="breadcrumbs">
+          <span class="breadcrumb-root">Scraper</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" id="breadcrumbCurrent">Dashboard</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Selected video quick badge -->
+        <div class="active-video-pill" id="activeVideoPill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:var(--accent-yt)"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+          <span class="active-video-title" id="activeVideoTitle">No video selected</span>
+        </div>
+
+        <!-- Honest Live API Status Badge -->
+        <button class="api-status-badge status-checking" id="apiStatusBadge" title="Click to view API diagnostics">
+          <span class="status-dot"></span>
+          <span id="apiStatusLabel">Checking...</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Views Container -->
+    <main class="view-container">
+
+      <!-- ===================================================================
+           VIEW 1: Dashboard Overview
+           =================================================================== -->
+      <section class="view-section active" id="view-dashboard">
+        <div class="hero-stats-banner">
+          <div class="hero-content">
+            <span class="hero-badge">YouTube Analytics Engine</span>
+            <h1 class="hero-title">Extract, explore, and analyze YouTube comment intelligence.</h1>
+            <p class="hero-desc">
+              Search any YouTube channel by name or @handle, locate specific videos, collect deep reply threads, and export structured data in standardized CSV and JSON formats.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" id="startSearchHeroBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Start Video Search
+              </button>
+              <button class="btn btn-secondary" id="viewCommentsHeroBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                View Comments
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SaaS Feature Highlights -->
+        <div class="overview-grid">
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 class="feature-title">Accurate Channel Resolution</h3>
+            <p class="feature-desc">Search by official channel title or exact handle (e.g. @MKBHD, @Veritasium) to find exact matching uploads with statistics.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg>
+            </div>
+            <h3 class="feature-title">Complete Reply Tree Retrieval</h3>
+            <p class="feature-desc">Optionally scrape both top-level comments and nested replies, paginated up to 5,000 comments per request.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+            </div>
+            <h3 class="feature-title">Instant RFC 4180 Exports</h3>
+            <p class="feature-desc">Download datasets formatted for Excel, Google Sheets, or Python pandas with proper UTF-8 BOM encoding for emojis.</p>
+          </div>
+        </div>
+
+        <!-- Quota Information Card -->
+        <div class="card">
+          <h3 class="card-title">YouTube Data API Quota Guidance</h3>
+          <p class="card-subtitle">Understand how scraping operations impact your daily free API usage.</p>
+          <div style="font-size:13.5px;color:var(--text-secondary);line-height:1.6">
+            <p style="margin-bottom:8px">
+              • <strong>Channel & Video Search:</strong> Costs approximately <strong>100 quota units</strong> per query.
+            </p>
+            <p style="margin-bottom:8px">
+              • <strong>Comment Thread Retrieval:</strong> Costs only <strong>1 quota unit</strong> per page of up to 100 comments.
+            </p>
+            <p>
+              • <strong>Daily Quota:</strong> Standard YouTube Data API v3 free tier includes <strong>10,000 units/day</strong>, resetting at midnight Pacific Time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 2: Video Search & Selection
+           =================================================================== -->
+      <section class="view-section" id="view-search">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Video Search</h1>
+            <p class="page-description">Search by channel name or @handle and video title keywords to pick a video.</p>
+          </div>
+        </div>
+
+        <!-- Search Form -->
+        <div class="card search-form-card">
+          <form id="videoSearchForm">
+            <div class="search-fields-grid">
+              <div class="form-group">
+                <label class="form-label" for="channelInput">Channel name or @handle</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </span>
+                  <input type="text" id="channelInput" class="form-input has-icon" placeholder="e.g. MrBeast or @MKBHD" required autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="videoInput">Video title / search keyword</label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  </span>
+                  <input type="text" id="videoInput" class="form-input has-icon" placeholder="e.g. iPhone review or Minecraft" required autocomplete="off" />
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="searchSubmitBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Search Videos
+              </button>
+            </div>
+          </form>
+
+          <!-- Search Error Banner -->
+          <div class="alert-banner alert-danger" id="searchErrorBanner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="searchErrorText">Error message</span>
+          </div>
+        </div>
+
+        <!-- Channel Info Header -->
+        <div class="channel-profile-bar" id="channelProfileBar">
+          <div class="channel-info">
+            <img class="channel-avatar" id="channelThumb" src="" alt="Channel Avatar" />
+            <div>
+              <div class="channel-meta-name" id="channelTitle">Channel Name</div>
+              <div class="channel-match-badge" id="channelMatches">Matching videos</div>
+            </div>
+          </div>
+          <span class="btn btn-sm btn-ghost" style="pointer-events:none">YouTube Channel Verified</span>
+        </div>
+
+        <!-- Videos Results Container -->
+        <div class="videos-grid" id="videosContainer"></div>
+
+        <!-- Empty State for Search -->
+        <div class="card empty-state" id="videosEmptyState">
+          <div class="empty-state-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3 class="empty-state-title">No search results yet</h3>
+          <p class="empty-state-desc">Enter a channel name and video keywords above to discover matching videos and scrape their comments.</p>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 3: Comments & Analytics Explorer
+           =================================================================== -->
+      <section class="view-section" id="view-comments">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Comments Explorer</h1>
+            <p class="page-description">Configure comment retrieval settings, compute engagement statistics, and export comment datasets.</p>
+          </div>
+        </div>
+
+        <!-- Selected Video Context Banner -->
+        <div class="active-video-banner" id="activeVideoBanner" style="display:none">
+          <div class="active-video-main">
+            <img class="active-video-thumb" id="activeVideoThumb" src="" alt="Thumbnail" />
+            <div class="active-video-details">
+              <div class="active-video-tag">Active Video Target</div>
+              <h2 class="active-video-heading" id="activeVideoHeading">Video Title</h2>
+              <div class="active-video-channel" id="activeVideoChannel">Channel info</div>
+            </div>
+          </div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" id="activeVideoYtLink">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color:var(--accent-yt)"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            Watch on YouTube
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+
+        <!-- Scrape Controls Card -->
+        <div class="card scrape-controls-card">
+          <div class="scrape-controls-grid">
+            <!-- Max Comments Limit -->
+            <div class="form-group">
+              <label class="form-label" for="scrapeLimit">Max comments</label>
+              <input type="number" id="scrapeLimit" class="form-input" value="200" min="1" max="5000" />
+              <div class="preset-pills">
+                <button type="button" class="preset-pill" data-limit="100">100</button>
+                <button type="button" class="preset-pill active" data-limit="200">200</button>
+                <button type="button" class="preset-pill" data-limit="500">500</button>
+                <button type="button" class="preset-pill" data-limit="1000">1K</button>
+              </div>
+            </div>
+
+            <!-- Sort Order -->
+            <div class="form-group">
+              <label class="form-label" for="scrapeOrder">API sort order</label>
+              <select id="scrapeOrder" class="form-input form-select">
+                <option value="relevance">Top comments</option>
+                <option value="time">Newest first</option>
+              </select>
+            </div>
+
+            <!-- Include Replies -->
+            <div class="form-group" style="padding-bottom:8px">
+              <label class="form-label">&nbsp;</label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="scrapeReplies" class="form-checkbox" />
+                <span>Include comment replies</span>
+              </label>
+            </div>
+
+            <!-- Submit Scrape Button -->
+            <button type="button" class="btn btn-primary" id="scrapeSubmitBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Scrape Comments
+            </button>
+          </div>
+
+          <!-- Error Alert Banner -->
+          <div class="alert-banner alert-danger" id="scrapeErrorBanner">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="scrapeErrorText">Scrape error message</span>
+          </div>
+        </div>
+
+        <!-- Metric KPI Cards (Only populated from actual data) -->
+        <div class="metrics-row" id="metricsRow" style="display:none">
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Retrieved Comments</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="metric-value" id="metricTotalCount">0</div>
+            <div class="metric-subtext" id="metricTotalSub">Direct scrape count</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Top-Level / Replies</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
+            </div>
+            <div class="metric-value" id="metricBreakdown">0 / 0</div>
+            <div class="metric-subtext" id="metricBreakdownSub">Thread composition</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Total Comment Likes</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            </div>
+            <div class="metric-value" id="metricLikes">0</div>
+            <div class="metric-subtext" id="metricLikesSub">Audience engagement</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-header">
+              <span>Top Liked Author</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="metric-value" id="metricTopAuthor" style="font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">—</div>
+            <div class="metric-subtext" id="metricTopAuthorSub">Highest voted comment</div>
+          </div>
+        </div>
+
+        <!-- Comments Table & Toolbar -->
+        <div class="card comments-panel-card">
+          <!-- Filter Toolbar -->
+          <div class="table-toolbar">
+            <div class="toolbar-filters">
+              <div class="input-wrapper toolbar-search">
+                <span class="input-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </span>
+                <input type="text" id="commentsSearchInput" class="form-input has-icon" placeholder="Search author or comment text..." />
+              </div>
+
+              <select id="commentTypeFilter" class="form-input form-select" style="width:140px">
+                <option value="all">All Comments</option>
+                <option value="comment">Top-level only</option>
+                <option value="reply">Replies only</option>
+              </select>
+
+              <select id="commentSortSelect" class="form-input form-select" style="width:150px">
+                <option value="likes_desc">Sort: Most Likes</option>
+                <option value="date_desc">Sort: Newest</option>
+                <option value="date_asc">Sort: Oldest</option>
+              </select>
+
+              <select id="minLikesFilter" class="form-input form-select" style="width:130px">
+                <option value="0">All Likes</option>
+                <option value="1">1+ Likes</option>
+                <option value="5">5+ Likes</option>
+                <option value="20">20+ Likes</option>
+              </select>
+
+              <span class="btn btn-sm btn-ghost" id="visibleCommentsCount" style="pointer-events:none;font-weight:700">0 matching</span>
+            </div>
+
+            <!-- Export Buttons -->
+            <div class="toolbar-actions">
+              <button class="btn btn-sm btn-secondary" id="copyTextBtn" title="Copy visible comments as formatted text">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy Text
+              </button>
+              <button class="btn btn-sm btn-secondary" id="exportCsvBtn" title="Download RFC 4180 CSV with UTF-8 BOM">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                CSV
+              </button>
+              <button class="btn btn-sm btn-secondary" id="exportJsonBtn" title="Download formatted JSON array">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                JSON
+              </button>
+            </div>
+          </div>
+
+          <!-- Comments Table View -->
+          <div class="table-responsive" id="commentsTableWrapper" style="display:none">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Author</th>
+                  <th>Comment Content</th>
+                  <th style="text-align:right">Likes</th>
+                  <th>Published</th>
+                </tr>
+              </thead>
+              <tbody id="commentsTableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Empty State for Comments Table -->
+          <div class="empty-state" id="commentsEmptyState">
+            <div class="empty-state-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="empty-state-title" id="emptyStateHeading">No comments loaded</h3>
+            <p class="empty-state-desc" id="emptyStateDesc">Select a video from the Video Search view, configure your options above, and click "Scrape Comments".</p>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="table-pagination" id="tablePaginationBar" style="display:none">
+            <div id="paginationSummary">Showing 0–0 of 0</div>
+            <div class="pagination-controls">
+              <label style="display:flex;align-items:center;gap:6px">
+                <span>Per page:</span>
+                <select id="rowsPerPageSelect" class="form-input form-select" style="padding:4px 28px 4px 8px;width:auto">
+                  <option value="10">10</option>
+                  <option value="25" selected>25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </label>
+              <button class="btn btn-sm btn-ghost" id="prevPageBtn">Previous</button>
+              <span class="page-indicator" id="pageIndicator">Page 1</span>
+              <button class="btn btn-sm btn-ghost" id="nextPageBtn">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 4: Export History
+           =================================================================== -->
+      <section class="view-section" id="view-exports">
+        <div class="export-history-header">
+          <div>
+            <h1 class="page-title">Export History</h1>
+            <p class="page-description">Log of generated CSV and JSON export files from your browser session.</p>
+          </div>
+          <button class="btn btn-sm btn-danger" id="clearExportHistoryBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Clear History
+          </button>
+        </div>
+
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="table-responsive" id="exportsTableWrapper" style="display:none">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Target Video</th>
+                  <th>Format</th>
+                  <th>Comments</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="exportsTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="empty-state" id="exportsEmptyState">
+            <div class="empty-state-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+            </div>
+            <h3 class="empty-state-title">No exports generated yet</h3>
+            <p class="empty-state-desc">When you download comments as CSV or JSON from the Comments view, the download history and records will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 5: Settings & Diagnostics
+           =================================================================== -->
+      <section class="view-section" id="view-settings">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Settings & System Diagnostics</h1>
+            <p class="page-description">Verify YouTube Data API health status, configure scraper defaults, and manage local storage.</p>
+          </div>
+        </div>
+
+        <div class="settings-grid">
+          <!-- API Diagnostics Card -->
+          <div class="card">
+            <h3 class="card-title">API Connection Diagnostic</h3>
+            <p class="card-subtitle">Perform a real-time probe against your server's YouTube API configuration.</p>
+            
+            <button class="btn btn-secondary" id="testConnectionBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Test Connection Now
+            </button>
+
+            <div class="diagnostic-result-box" id="diagnosticResultBox">
+              Awaiting diagnostic probe...
+            </div>
+          </div>
+
+          <!-- Scraper Preferences Form -->
+          <div class="card">
+            <h3 class="card-title">Default Scraper Preferences</h3>
+            <p class="card-subtitle">Set your preferred initial defaults for new scraping sessions.</p>
+            
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div class="form-group">
+                <label class="form-label" for="prefDefaultLimit">Default Comment Limit</label>
+                <input type="number" id="prefDefaultLimit" class="form-input" min="1" max="5000" value="200" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="prefDefaultOrder">Default Sort Order</label>
+                <select id="prefDefaultOrder" class="form-input form-select">
+                  <option value="relevance">Top comments (Relevance)</option>
+                  <option value="time">Newest first (Time)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="prefDefaultReplies" class="form-checkbox" />
+                  <span>Auto-include replies by default</span>
+                </label>
+              </div>
+
+              <button class="btn btn-primary" id="savePreferencesBtn" style="align-self:flex-start">
+                Save Preferences
+              </button>
+            </div>
+          </div>
+
+          <!-- Application Reset Card -->
+          <div class="card" style="grid-column: 1 / -1">
+            <h3 class="card-title">Data Management</h3>
+            <p class="card-subtitle">Clear cached comments, export history, and local preferences stored in your browser.</p>
+            <button class="btn btn-danger" id="clearAllDataBtn">
+              Reset All Local Application Data
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Toast Feedback Notifications Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Application Logic -->
+<script src="app.js"></script>
+</body>
+</html>
